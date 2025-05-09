@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+body{
+  background-color: rgb(21, 21, 23);
+}
+
+/* filepath: d:\Suja's Folder 2.0\SST WEB-DEV\React Trimester 3\IMBD App\vite-project\src\App.css */
+/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap'); */
+
+.font-oswald{
+  font-family: "Staatliches", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
