@@ -11,7 +11,7 @@ function Watchlist() {
 
 
   // const [activeGenre, setActiveGenre] = useState("All");
-  const [genreList, setGenreList] = useState(["All Genres"]);
+  const [genreList, setGenreList] = useState("All Genres");
 
   console.log(genreMap);
 
