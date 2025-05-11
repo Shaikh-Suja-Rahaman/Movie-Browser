@@ -33,7 +33,7 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList }) {
     <>
     <FadeContent blur={true} duration={500} easing="ease-out" initialOpacity={0}>
 
-    <div className="scale-105 w-[200px] rounded-lg overflow-hidden hover:brightness-90 transition-all duration-200 ease-in-out" >
+    <div className="cursor-pointer scale-105 w-[200px] rounded-lg overflow-hidden hover:brightness-90 transition-all duration-200 ease-in-out" >
 
 
         <div
@@ -56,7 +56,8 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList }) {
                   e.stopPropagation();
                   handleDeleteFromWatchList(movieObj.id);
                 }}
-                className="fa-solid fa-heart hover:cursor-pointer"
+                className="hover:text-red-600 fa-solid fa-heart hover:cursor-pointer"
+
               ></i>
                             {/*  */}
 
@@ -98,8 +99,8 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList }) {
     </FadeContent>
     <DetailsModal
     MovieObj={movieObj}
-    isOpen={isModalOpen}
-    onClose={()=> setIsModalOpen(false)}
+    isOpen={isModalOpen} //checking if modal is open or not
+    onClose={()=> setIsModalOpen(false)} //what to do when 
     />
 
 
