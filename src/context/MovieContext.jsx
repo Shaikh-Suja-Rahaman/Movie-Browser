@@ -22,9 +22,12 @@ function MovieContextProvider({children}) {
     console.log(updatedWatchList);
   }
 
-  function handleDeleteFromWatchList(movieId){
-    setWatchList(prevList => prevList.filter(movie => movie.id != movieId))
-  }
+  function handleDeleteFromWatchList(movieId) {
+  const updatedWatchList = watchList.filter(movie => movie.id !== movieId);
+  setWatchList(updatedWatchList);
+  // Update localStorage after deleting
+  localStorage.setItem('watchlistMovies', JSON.stringify(updatedWatchList));
+}
 
   return(
     <>
