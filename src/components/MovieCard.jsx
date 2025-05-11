@@ -3,14 +3,18 @@ import FadeContent from '../animations/FadeContent'
 import ClickSpark from '../animations/ClickSpark';
 import TiltedCard from '../animations/TiltedCard';
 import DetailsModal from "./DetailsModal";
+import {useContext} from "react";
+import { MovieContext } from "../context/MovieContext";
 
-function MovieCard({ movieObj, handleAddToWatchList, watchList, handleDeleteFromWatchList }) {
+function MovieCard({ movieObj, handleAddToWatchList, watchList }) {
   //write a function which checks if a movie id exists in the watchList or not, if it exists, don't add the movie to the watchList, to avoid dublicated
   const [isModalOpen, setIsModalOpen] = useState(false);
+    const {handleDeleteFromWatchList} = useContext(MovieContext)
 
   const showMovieDetail = () =>{
     setIsModalOpen(true);
   }
+  //handleDeleteFromWatchList
 
 
   function doesContain(movieObj) {
@@ -46,13 +50,7 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList, handleDeleteFrom
 </div>
           {doesContain(movieObj) ? (
             <div className="absolute text-red-500 bottom-0 left-0 w-full p-2 text-2xl">
-              <ClickSpark
-  sparkColor='#fff'
-  sparkSize={10}
-  sparkRadius={15}
-  sparkCount={8}
-  duration={400}
->
+
               <i
                 onClick={(e) => {
                   e.stopPropagation();
@@ -60,7 +58,7 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList, handleDeleteFrom
                 }}
                 className="fa-solid fa-heart hover:cursor-pointer"
               ></i>
-                            </ClickSpark>
+                            {/*  */}
 
               <div
                 className="absolute flex items-center text-white bottom-0 right-[-1px] p-2 text-[20px] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20 z-100"
@@ -70,15 +68,11 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList, handleDeleteFrom
                 {movieObj.vote_average.toFixed(1)}
               </div>
             </div>
+
+
           ) : (
             <div className="absolute text-white bottom-0 left-0 w-full p-2 text-2xl">
-              <ClickSpark
-  sparkColor='#fff'
-  sparkSize={10}
-  sparkRadius={15}
-  sparkCount={8}
-  duration={400}
->
+
               <i
                 onClick={(e) => {
                   e.stopPropagation();
@@ -86,7 +80,7 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList, handleDeleteFrom
                 }}
                 class="fa-regular fa-heart hover:cursor-pointer"
               ></i>
-              </ClickSpark>
+
               <div
                 className="absolute flex items-center text-white bottom-0 right-[-1px] p-2 text-[20px] bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-20
 "
@@ -99,6 +93,7 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList, handleDeleteFrom
           )}
         </div>
 
+
       </div>
     </FadeContent>
     <DetailsModal
@@ -106,6 +101,7 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList, handleDeleteFrom
     isOpen={isModalOpen}
     onClose={()=> setIsModalOpen(false)}
     />
+
 
 
     </>
