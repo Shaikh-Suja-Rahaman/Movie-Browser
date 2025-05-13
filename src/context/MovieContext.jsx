@@ -1,11 +1,12 @@
-import { createContext, useState, useEffect, useRef} from "react";
+import { createContext, useState, useEffect, useRef } from "react";
 
 export const MovieContext = createContext();
 
-function MovieContextProvider({children}) {
+function MovieContextProvider({ children }) {
 
   const [watchList, setWatchList] = useState([]);
-  const searchRef = useRef();
+  const [search, setSearch] = useState(""); // <-- add this
+  const searchRef = useRef(null);
 
   useEffect(() => {
     const savedMovies = JSON.parse(localStorage.getItem('watchlistMovies')) || [];
@@ -31,7 +32,15 @@ function MovieContextProvider({children}) {
 
   return(
     <>
-      <MovieContext.Provider value={{watchList, setWatchList, handleAddToWatchList, handleDeleteFromWatchList, searchRef}}>
+      <MovieContext.Provider value={{
+        watchList,
+        setWatchList,
+        handleAddToWatchList,
+        handleDeleteFromWatchList,
+        search, // <-- add this
+        setSearch, // <-- add this
+        searchRef
+      }}>
         {children}
       </MovieContext.Provider>
     </>

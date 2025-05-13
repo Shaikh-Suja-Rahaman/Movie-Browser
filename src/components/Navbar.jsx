@@ -1,11 +1,12 @@
 import React from "react";
 import movieLogo from "../assets/movie_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg";
 import { Link } from "react-router-dom";
-import {useContext } from "react"
+import { useContext } from "react";
 import { MovieContext } from "../context/MovieContext";
 
 function Navbar() {
-  const { searchRef } = useContext(MovieContext)
+  const { search, setSearch, searchRef } = useContext(MovieContext);
+
   return (
     <>
       <div className="fixed top-0 w-full z-50 font-sans border-s-gray-900 backdrop-blur-lg h-auto shadow-lg">
@@ -38,8 +39,10 @@ function Navbar() {
           </div>
           <div className="relative w-full max-w-md">
             <input
-
               type="text"
+              value={search}
+              ref = {searchRef}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Search Movie ..."
               className="w-full pl-10 pr-4 py-2 rounded-full border-2 border-white transition-all duration-200 ease-in-out focus:outline-none focus:ring-3 focus:ring-gray-400"
             />

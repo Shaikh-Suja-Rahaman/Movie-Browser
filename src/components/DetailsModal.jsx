@@ -154,7 +154,7 @@ const DetailsModal = ({ MovieObj, isOpen, onClose }) => {
         e.stopPropagation();
         handleDeleteFromWatchList(MovieObj.id);
       }}
-      className="flex mb-3 items-center gap-2 px-3 py-3 rounded-md bg-red-500 hover:bg-red-600 text-white transition-colors duration-200"
+      className="flex mb-4 items-center gap-2 px-3 py-3 rounded-md bg-red-500 hover:bg-red-600 text-white transition-colors duration-200"
     >
       <i className="fa-solid fa-heart"></i>
       <span>Added to watchlist</span>
@@ -167,7 +167,7 @@ const DetailsModal = ({ MovieObj, isOpen, onClose }) => {
         e.stopPropagation();
         handleAddToWatchList(MovieObj);
       }}
-      className="flex mb-3 items-center gap-2 px-3 py-3 rounded-md bg-gray-800 hover:bg-gray-700 text-white transition-colors duration-200"
+      className="flex mb-4 items-center gap-2 px-3 py-3 rounded-md bg-gray-800 hover:bg-gray-700 text-white transition-colors duration-200"
     >
       <i className="fa-regular fa-heart"></i>
       <span>Add to watchlist</span>
