@@ -1,39 +1,21 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { MovieContext } from '../context/MovieContext';
 import Pagination from './Pagination';
 import MovieCard from './MovieCard';
 
 const Search = () => {
-  const { watchList, handleAddToWatchList } = useContext(MovieContext);
-  const [inputValue, setInputValue] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const { watchList, handleAddToWatchList, searchQuery } = useContext(MovieContext);
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const handleInputChange = (e) => {
-    setInputValue(e.target.value);
-  };
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      setSearchQuery(inputValue);
-      setPage(1); // Reset to first page on new search
-    }
-  };
-
   const pageNext = () => {
-    if (page < totalPages) {
-      setPage(page + 1);
-    }
+    if (page < totalPages) setPage(page + 1);
   };
-
   const pagePrev = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
+    if (page > 1) setPage(page - 1);
   };
 
   React.useEffect(() => {
@@ -63,23 +45,20 @@ const Search = () => {
 
   return (
     <>
-      <div className="flex justify-center my-4">
-        <input
-          type="text"
-          value={inputValue}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-          className="p-2 rounded w-1/2"
-          placeholder="Search for movies and press Enter..."
-        />
-      </div>
       <div>
         {loading ? (
           <div className="text-white text-center">Loading...</div>
         ) : !movies?.length && searchQuery ? (
           <div className="text-white text-center">No results found</div>
         ) : (
-          <div className="flex justify-evenly m-3 flex-wrap gap-20">
+          <>
+          <div className="text-white flex justify-center m-5 text-2xl">
+  <h1 className="mr-2">Showing Results for</h1>
+  <span className="font-bold text-gray-300">{searchQuery}</span>
+</div>
+
+
+          <div className="flex justify-evenly m-3 mt-10 flex-wrap gap-20">
             {movies.map((movieObj, i) => (
               <MovieCard
                 key={`${page}-${i}`}
@@ -89,8 +68,8 @@ const Search = () => {
               />
             ))}
           </div>
+          </>
         )}
-
         <Pagination pageNext={pageNext} pagePrev={pagePrev} page={page} />
       </div>
     </>

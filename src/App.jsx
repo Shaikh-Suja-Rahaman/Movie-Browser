@@ -15,16 +15,17 @@ import PopularMovies from './components/PopularMovies';
 import Navbar from './components/Navbar';
 
 function App() {
-  const { search } = useContext(MovieContext);
+  const { searchQuery } = useContext(MovieContext);
 
   return (
     <BrowserRouter>
       <Navbar />
       <Divider />
       <Routes>
+        
         <Route path='/' element={
           <>
-            {search.trim() === "" ? (
+            {searchQuery.trim() === "" ? (
               <>
                 <Banner />
                 <Divider />

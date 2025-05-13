@@ -5,7 +5,8 @@ export const MovieContext = createContext();
 function MovieContextProvider({ children }) {
 
   const [watchList, setWatchList] = useState([]);
-  const [search, setSearch] = useState(""); // <-- add this
+  const [search, setSearch] = useState(""); // for input value
+  const [searchQuery, setSearchQuery] = useState(""); // for actual search trigger
   const searchRef = useRef(null);
 
   useEffect(() => {
@@ -37,8 +38,10 @@ function MovieContextProvider({ children }) {
         setWatchList,
         handleAddToWatchList,
         handleDeleteFromWatchList,
-        search, // <-- add this
-        setSearch, // <-- add this
+        search,
+        setSearch,
+        searchQuery,
+        setSearchQuery,
         searchRef
       }}>
         {children}

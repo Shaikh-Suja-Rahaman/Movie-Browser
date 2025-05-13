@@ -96,7 +96,36 @@ const DetailsModal = ({ MovieObj, isOpen, onClose }) => {
       ) : (
         <div className="relative bg-gray-900 text-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto m-4 scrollbar-hide">
           {/* Header with backdrop */}
-          <div
+
+          {movieDetails.backdrop_path === null ? (
+
+              <div
+            className="relative h-30 bg-cover bg-center rounded-t-xl"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent rounded-t-xl"></div>
+
+            {/* Close button */}
+            <button
+              onClick={onClose}
+              className="absolute cursor-pointer top-4 right-4 bg-gray-900/50 hover:bg-gray-900 p-2 rounded-full transition-colors duration-200"
+              aria-label="Close modal"
+            >
+              <X size={24} />
+            </button>
+
+            {/* Title overlay */}
+            <div className="absolute bottom-0 left-0 p-6 w-full">
+              <h2 className="text-4xl font-bold tracking-tight">{movieDetails.title}</h2>
+              {movieDetails.tagline && (
+                <p className="text-gray-300 italic mt-2">{movieDetails.tagline}</p>
+              )}
+            </div>
+            </div>
+
+
+          ) : (
+
+            <div
             className="relative h-100 bg-cover bg-center rounded-t-xl"
             style={{
               backgroundImage: `url(https://image.tmdb.org/t/p/original${movieDetails.backdrop_path})`,
@@ -120,9 +149,14 @@ const DetailsModal = ({ MovieObj, isOpen, onClose }) => {
                 <p className="text-gray-300 italic mt-2">{movieDetails.tagline}</p>
               )}
             </div>
-          </div>
+            </div>
 
-          {/* Content */}
+          )}
+
+
+
+
+
           <div className="p-6 flex flex-col md:flex-row gap-6">
             {/* Left column - Poster and rating */}
             <div className="md:w-1/3 flex flex-col items-center">

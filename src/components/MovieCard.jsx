@@ -66,7 +66,9 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList }) {
 
               >
                 <i class="text-amber-400 text-[15px] fa-solid m-1 fa-star"></i>
-                {movieObj.vote_average.toFixed(1)}
+                {typeof movieObj.vote_average === "number"
+    ? movieObj.vote_average.toFixed(1)
+    : "N/A"}
               </div>
             </div>
 
@@ -87,7 +89,9 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList }) {
 "
               >
                 <i className="text-amber-400 text-[15px] fa-solid m-1 fa-star"></i>
-                {movieObj.vote_average.toFixed(1)}
+                {typeof movieObj.vote_average === "number"
+    ? movieObj.vote_average.toFixed(1)
+    : "N/A"}
               </div>
 
             </div>
@@ -100,7 +104,7 @@ function MovieCard({ movieObj, handleAddToWatchList, watchList }) {
     <DetailsModal
     MovieObj={movieObj}
     isOpen={isModalOpen} //checking if modal is open or not
-    onClose={()=> setIsModalOpen(false)} //what to do when 
+    onClose={()=> setIsModalOpen(false)} //what to do when
     />
 
 
