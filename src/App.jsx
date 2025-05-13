@@ -22,7 +22,7 @@ function App() {
       <Navbar />
       <Divider />
       <Routes>
-        
+
         <Route path='/' element={
           <>
             {searchQuery.trim() === "" ? (
@@ -36,7 +36,19 @@ function App() {
             )}
           </>
         }/>
-        <Route path='/watchlist' element={<Watchlist />} />
+        <Route path='/watchlist' element={
+          <>
+          {searchQuery.trim() === "" ? (
+            <>
+              <Watchlist/>
+            </>
+            ) : (
+              <Search />
+            )}
+          </>
+        }/>
+        {/* <Route path='/watchlist' element={<Watchlist />} /> */}
+
       </Routes>
     </BrowserRouter>
   );
