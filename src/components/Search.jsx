@@ -47,9 +47,12 @@ const Search = () => {
     <>
       <div>
         {loading ? (
-          <div className="text-white text-center">Loading...</div>
+          <div className='flex flex-col justify-center items-center'>
+            <div className="m-5 h-16 w-16 border-4 border-blue-800 rounded-full animate-spin border-t-transparent"></div>
+            <div className="text-white text-center">Loading...</div>
+          </div>
         ) : !movies?.length && searchQuery ? (
-          <div className="text-white text-center">No results found</div>
+          <div className="text-white text-center m-5 text-2xl">No results found</div>
         ) : (
           <>
           <div className="text-white flex justify-center m-5 text-2xl">
@@ -70,7 +73,18 @@ const Search = () => {
           </div>
           </>
         )}
-        <Pagination pageNext={pageNext} pagePrev={pagePrev} page={page} />
+        {totalPages === 1 ? (
+          <>
+
+          </>
+        ) : (
+          <>
+            <Pagination pageNext={pageNext} pagePrev={pagePrev} page={page} />
+          </>
+        )
+
+        }
+
       </div>
     </>
   );

@@ -48,16 +48,7 @@ function Navbar() {
             >
               WATCHLIST
             </Link>
-            <Link
-              to="/recommendations"
-              onClick={handleNavClick}
-              className={`bg-transparent hover:text-white px-3 py-1 rounded-4xl transition-all duration-200 ease-in-out
-              hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)] ${
-                location.pathname === "/recommendations" ? "active" : ""
-              }`}
-            >
-              AI RECOMMENDATIONS
-            </Link>
+            
           </div>
           <div className="relative w-full max-w-md">
             <input
