@@ -1,12 +1,101 @@
-# React + Vite
+# IMDB App (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern movie browser and watchlist app built with React, Vite, and Tailwind CSS. It uses the [TMDB API](https://www.themoviedb.org/documentation/api) to fetch movie data, allowing users to search, browse, and manage a personal watchlist.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Browse Movies:** View popular, top-rated, upcoming, and now playing movies.
+- **Search:** Search for movies by title using the TMDB API.
+- **Movie Details:** View detailed information about each movie, including cast, genres, ratings, and production companies.
+- **Watchlist:** Add or remove movies from your personal watchlist, which is saved in local storage.
+- **Responsive UI:** Built with Tailwind CSS for a modern, responsive design.
+- **Animations:** Includes custom animations for enhanced user experience.
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+vite-project/
+  ├── public/
+  ├── src/
+  │   ├── animations/      # Custom animation components
+  │   ├── assets/          # Static images and SVGs
+  │   ├── components/      # React UI components
+  │   ├── context/         # React Context for global state
+  │   ├── utilities/       # Utility files (e.g., genre mapping)
+  │   ├── App.jsx          # Main app component
+  │   ├── main.jsx         # Entry point
+  │   └── Tabs.jsx         # Tab navigation for movie categories
+  ├── index.html
+  ├── package.json
+  ├── tailwind.config.js
+  └── vite.config.js
+```
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Installation
+
+1. **Clone the repository:**
+   ```sh
+   git clone <your-repo-url>
+   cd vite-project
+   ```
+
+2. **Install dependencies:**
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Start the development server:**
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. **Open in your browser:**
+   Visit [http://localhost:5173](http://localhost:5173) (or the port shown in your terminal).
+
+## Configuration
+
+- The TMDB API key is currently hardcoded in the codebase. For production, consider moving it to an environment variable.
+
+## Scripts
+
+- `npm run dev` — Start the development server
+- `npm run build` — Build for production
+- `npm run preview` — Preview the production build
+- `npm run lint` — Run ESLint
+
+## Dependencies
+
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Axios](https://axios-http.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [React Router DOM](https://reactrouter.com/)
+- [Lucide React](https://lucide.dev/)
+- [Font Awesome](https://fontawesome.com/)
+
+## Folder Highlights
+
+- [`src/components`](src/components): Main UI components like `MovieCard`, `Watchlist`, `Navbar`, etc.
+- [`src/context/MovieContext.jsx`](src/context/MovieContext.jsx): Global state management for watchlist and search.
+- [`src/animations`](src/animations): Custom animation components.
+- [`src/utilities/genreids.js`](src/utilities/genreids.js): Genre ID to name mapping.
+
+## License
+
+This project is for educational purposes.
+
+---
+
+**Note:** This project uses the TMDB API but is not endorsed or certified by TMDB.
